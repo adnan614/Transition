@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <transition name="appear">
+        <div class="p-3 mb-2 bg-success text-white"
+          v-if="display">
+         Hello
+    </div>
+    
+    </transition>
+    
+    <button @click="display=!display" class="btn btn-primary">Toggle</button>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      display: false
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style >
+  .appear-enter{
+      opacity: 0;
+      transform: translateX(500px);
+  }
+  .appear-enter-active{
+      transition: all .2s ease;
+  }
+
+  .appear-leave{
+
+  }
+
+  .appear-leave-active{
+      opacity: 0;
+      transform: translateX(500px);
+      transition: all .2s ease;
+  }
 </style>
